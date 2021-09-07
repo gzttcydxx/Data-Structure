@@ -20,29 +20,29 @@ int QUEUELENGTH(SqQueue Q) {
 
 Status GETHEAD(SqQueue Q, ElemType& item) {
 	if (QUEUEEMPTY(Q)) return ERROR;
-	item = Q.elem[Q.front];
+	item = Q.elem[Q.front + 1];
 	return OK;
 }
 
 Status ENQUEUE(SqQueue& Q, ElemType item) {
 	ElemType* newbase;
-	if (Q.front + 1 == Q.stacksize) {
+	if (Q.rear + 1 == Q.stacksize) {
 		newbase = (ElemType*)realloc(Q.elem, (Q.stacksize + QUEUEINCREMENT) * sizeof(ElemType));
 		if (!newbase) exit(OVERFLOW);
 		Q.elem = newbase;
 		Q.stacksize += QUEUEINCREMENT;
 	}
-	Q.elem[++Q.front] = item;
+	Q.elem[++Q.rear] = item;
 	return OK;
 }
 
 Status DEQUEUE(SqQueue& Q, ElemType& item) {
 	if (QUEUEEMPTY(Q)) return ERROR;
-	item = Q.elem[++Q.rear];
+	item = Q.elem[++Q.front];
 	return OK;
 }
 
 Status PRINTQUEUE(SqQueue Q) {
-	for (int i = Q.rear + 1; i <= Q.front; i++) printf("%d ", Q.elem[i]);
+	for (int i = Q.front + 1; i <= Q.rear; i++) printf("%d ", Q.elem[i]);
 	return OK;
 }

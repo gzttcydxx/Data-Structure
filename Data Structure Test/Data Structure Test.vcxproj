@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LinkQueueTest.cpp" />
     <ClCompile Include="LinkStackTest.cpp" />
     <ClCompile Include="SqListTest.cpp" />
     <ClCompile Include="LinkListTest.cpp" />

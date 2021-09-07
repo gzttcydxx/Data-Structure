@@ -1,23 +1,25 @@
 #include <stdio.h>
-#include "sqstack.h"
+#include "sqqueue.h"
 
-SqStack CreateStack() {
-	SqStack S;
+SqQueue CreateQueue() {
+	SqQueue Q;
 	const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
-	INITSTACK(S);
-	for (int i = 8; i >= 0; i--) PUSH(S, M[i]);
-	return S;
+	INITQUEUE(Q);
+	for (int i = 0; i < 9; i++) ENQUEUE(Q, M[i]);
+	return Q;
 }
 
 int main() {
-	int i = 0;
-	SqStack S = CreateStack();
-	ElemType* p;
-	PUSH(S, 1);
-	PUSH(S, 2);
-	PUSH(S, 3);
-	PUSH(S, 4);
-	PUSH(S, 5);
-	PRINTSTACK(S);
+	int i = 0, j;
+	SqQueue Q;
+	ElemType e;
+	const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
+	INITQUEUE(Q);
+	GETHEAD(Q, e);
+	Q = CreateQueue();
+	GETHEAD(Q, e);
+	printf("%d\n\n", e);
+	j = Q.front + 1;
+	PRINTQUEUE(Q);
 	return 0;
 }
