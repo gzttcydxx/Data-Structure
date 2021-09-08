@@ -76,5 +76,8 @@
     <None Include="graph.in">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="bitree.in">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

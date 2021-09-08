@@ -135,6 +135,7 @@
     <ClCompile Include="sqlist.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bitree.in" />
     <None Include="graph.in" />
   </ItemGroup>
   <ItemGroup>
