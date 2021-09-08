@@ -43,8 +43,8 @@ Status POP(SqStack& S, ElemType& item) {
 	return OK;
 }
 
-Status PRINTSTACK(SqStack S) {
+Status PRINTSTACK(SqStack S, Status(*visit)(ElemType)) {
 	ElemType* p = S.base;
-	while (p != S.top) printf("%d ", *p++);
+	while (p != S.top) (*visit)(*p++);
 	return OK;
 }

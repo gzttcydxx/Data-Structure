@@ -42,7 +42,7 @@ Status DEQUEUE(SqQueue& Q, ElemType& item) {
 	return OK;
 }
 
-Status PRINTQUEUE(SqQueue Q) {
-	for (int i = Q.front + 1; i <= Q.rear; i++) printf("%d ", Q.elem[i]);
+Status PRINTQUEUE(SqQueue Q, Status(*visit)(ElemType)) {
+	for (int i = Q.front + 1; i <= Q.rear; i++) (*visit)(Q.elem[i]);
 	return OK;
 }

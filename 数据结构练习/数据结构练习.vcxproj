@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="base.cpp" />
+    <ClCompile Include="bitree.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="linklist.cpp" />
     <ClCompile Include="linkqueue.cpp" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
+    <ClInclude Include="bitree.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="linklist.h" />
     <ClInclude Include="linkqueue.h" />

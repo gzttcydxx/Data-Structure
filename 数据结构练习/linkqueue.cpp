@@ -50,10 +50,10 @@ Status DEQUEUE(LinkQueue& Q, ElemType& item) {
 	return OK;
 }
 
-Status PRINTQUEUE(LinkQueue Q) {
+Status PRINTQUEUE(LinkQueue Q, Status(*visit)(ElemType)) {
 	QueuePtr p = Q.front->next;
 	while (p) {
-		printf("%d ", p->data);
+		(*visit)(p->data);
 		p = p->next;
 	}
 	return OK;

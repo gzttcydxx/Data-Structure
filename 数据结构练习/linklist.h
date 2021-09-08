@@ -12,4 +12,4 @@ Status INSERTLINKLIST(LinkList& L, int i, ElemType item);
 Status DELETELINKLIST(LinkList& L, int i, ElemType& item);
 int LOCATEELEM(LinkList L, ElemType item, Status(*compare)(ElemType, ElemType));
 Status GETELEM(LinkList L, int i, ElemType& item);
-Status PRINTLINKLIST(LinkList L);
+Status PRINTLINKLIST(LinkList L, Status(*visit)(ElemType));

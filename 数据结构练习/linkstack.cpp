@@ -49,10 +49,10 @@ Status POP(LinkStack& S, ElemType& item) {
 	return OK;
 }
 
-Status PRINTSTACK(LinkStack S) {
+Status PRINTSTACK(LinkStack S, Status(*visit)(ElemType)) {
 	LinkStack p = S->next;
 	while (p) {
-		printf("%d ", p->data);
+		(*visit)(p->data);
 		p = p->next;
 	}
 	return OK;

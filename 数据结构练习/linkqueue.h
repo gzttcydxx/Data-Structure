@@ -16,4 +16,4 @@ int QUEUELENGTH(LinkQueue Q);
 Status GETHEAD(LinkQueue Q, ElemType& item);
 Status ENQUEUE(LinkQueue& Q, ElemType item);
 Status DEQUEUE(LinkQueue& Q, ElemType& item);
-Status PRINTQUEUE(LinkQueue Q);
+Status PRINTQUEUE(LinkQueue Q, Status(*visit)(ElemType));

@@ -14,4 +14,4 @@ Status INITLIST(SqList& L);
 Status INSERTLIST(SqList& L, int i, ElemType item);
 Status DELETELIST(SqList& L, int i, ElemType& item);
 int LOCATEELEM(SqList L, ElemType item, Status(*compare)(ElemType, ElemType));
-Status PRINTLIST(SqList L);
+Status PRINTLIST(SqList L, Status(*visit)(ElemType));

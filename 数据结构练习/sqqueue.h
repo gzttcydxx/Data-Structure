@@ -16,4 +16,4 @@ int QUEUELENGTH(SqQueue Q);
 Status GETHEAD(SqQueue Q, ElemType& item);
 Status ENQUEUE(SqQueue& Q, ElemType item);
 Status DEQUEUE(SqQueue& Q, ElemType& item);
-Status PRINTQUEUE(SqQueue Q);
+Status PRINTQUEUE(SqQueue Q, Status(*visit)(ElemType));

@@ -63,10 +63,10 @@ Status GETELEM(LinkList L, int i, ElemType& item) {
 	return OK;
 }
 
-Status PRINTLINKLIST(LinkList L) {
+Status PRINTLINKLIST(LinkList L, Status(*visit)(ElemType)) {
 	LinkList p = L->next;
 	while (p) {
-		printf("%d ", p->data);
+		(*visit)(p->data);
 		p = p->next;
 	}
 	return OK;

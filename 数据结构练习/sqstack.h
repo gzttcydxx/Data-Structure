@@ -15,4 +15,4 @@ int STACKLENGTH(SqStack S);
 Status GETTOP(SqStack S, ElemType& item);
 Status PUSH(SqStack& S, ElemType item);
 Status POP(SqStack& S, ElemType& item);
-Status PRINTSTACK(SqStack S);
+Status PRINTSTACK(SqStack S, Status(*visit)(ElemType));

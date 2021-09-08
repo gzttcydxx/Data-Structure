@@ -43,7 +43,7 @@ int LOCATEELEM(SqList L, ElemType item, Status(*compare)(ElemType, ElemType)) {
 	else return ERROR;
 }
 
-Status PRINTLIST(SqList L) {
-	for (int i = 0; i < L.length; i++) printf("%d ", L.elem[i]);
+Status PRINTLIST(SqList L, Status(*visit)(ElemType)) {
+	for (int i = 0; i < L.length; i++) (*visit)(L.elem[i]);
 	return OK;
 }

@@ -42,6 +42,9 @@
     <ClCompile Include="linkqueue.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bitree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h">
@@ -66,6 +69,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="linkqueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="bitree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

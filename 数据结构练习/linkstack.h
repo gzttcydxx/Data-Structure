@@ -12,4 +12,4 @@ int STACKLENGTH(LinkStack S);
 Status GETTOP(LinkStack S, ElemType& item);
 Status PUSH(LinkStack& S, ElemType item);
 Status POP(LinkStack& S, ElemType& item);
-Status PRINTSTACK(LinkStack S);
+Status PRINTSTACK(LinkStack S, Status(*visit)(ElemType));

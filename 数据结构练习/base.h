@@ -12,3 +12,4 @@ typedef int Status;
 typedef int ElemType;
 
 Status compare(ElemType e1, ElemType e2);
+Status visit(ElemType item);
