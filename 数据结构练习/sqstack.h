@@ -4,15 +4,15 @@
 #define STACKINCREMENT 10
 
 typedef struct {
-	ElemType* base;
-	ElemType* top;
+	SElemType* base;
+	SElemType* top;
 	int stacksize;
 }SqStack;
 
 Status INITSTACK(SqStack& S);
 Status STACKEMPTY(SqStack& S);
 int STACKLENGTH(SqStack S);
-Status GETTOP(SqStack S, ElemType& item);
-Status PUSH(SqStack& S, ElemType item);
-Status POP(SqStack& S, ElemType& item);
-Status PRINTSTACK(SqStack S, Status(*visit)(ElemType));
+Status GETTOP(SqStack S, SElemType& item);
+Status PUSH(SqStack& S, SElemType item);
+Status POP(SqStack& S, SElemType& item);
+Status PRINTSTACK(SqStack S);

@@ -3,7 +3,7 @@
 #include "sqstack.h"
 
 Status INITSTACK(SqStack& S) {
-	S.base = (ElemType*)malloc(STACK_INIT_SIZE * sizeof(ElemType));
+	S.base = (SElemType*)malloc(STACK_INIT_SIZE * sizeof(SElemType));
 	if (!S.base) exit(OVERFLOW);
 	S.top = S.base;
 	S.stacksize = STACK_INIT_SIZE;
@@ -18,16 +18,16 @@ int STACKLENGTH(SqStack S) {
 	return S.top - S.base;
 }
 
-Status GETTOP(SqStack S, ElemType& item) {
+Status GETTOP(SqStack S, SElemType& item) {
 	if (STACKEMPTY(S)) return ERROR;
 	item = *(S.top - 1);
 	return OK;
 }
 
-Status PUSH(SqStack& S, ElemType item) {
-	ElemType* newbase;
+Status PUSH(SqStack& S, SElemType item) {
+	SElemType* newbase;
 	if (STACKLENGTH(S) >= S.stacksize) {
-		newbase = (ElemType*)realloc(S.base, (S.stacksize + STACKINCREMENT) * sizeof(ElemType));
+		newbase = (SElemType*)realloc(S.base, (S.stacksize + STACKINCREMENT) * sizeof(SElemType));
 		if (!newbase) exit(OVERFLOW);
 		S.base = newbase;
 		S.top = S.base + S.stacksize;
@@ -37,14 +37,14 @@ Status PUSH(SqStack& S, ElemType item) {
 	return OK;
 }
 
-Status POP(SqStack& S, ElemType& item) {
+Status POP(SqStack& S, SElemType& item) {
 	if (STACKEMPTY(S)) return ERROR;
 	item = *--S.top;
 	return OK;
 }
 
-Status PRINTSTACK(SqStack S, Status(*visit)(ElemType)) {
-	ElemType* p = S.base;
-	while (p != S.top) (*visit)(*p++);
+Status PRINTSTACK(SqStack S) {
+	SElemType* p = S.base;
+	while (p != S.top) visit(*p++);
 	return OK;
 }

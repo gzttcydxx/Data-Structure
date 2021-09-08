@@ -60,9 +60,9 @@ public:
 	}
 	TEST_METHOD(TestLocateElement) {
 		LinkList L = CreateList();
-		Assert::AreEqual(LOCATEELEM(L, 97, *compare), 8);
-		Assert::AreEqual(LOCATEELEM(L, 971, *compare), 0);
-		Assert::AreEqual(LOCATEELEM(L, 1, *compare), 1);
-		Assert::AreEqual(LOCATEELEM(L, 31, *compare), 9);
+		Assert::AreEqual(LOCATEELEM(L, 97), 8);
+		Assert::AreEqual(LOCATEELEM(L, 971), 0);
+		Assert::AreEqual(LOCATEELEM(L, 1), 1);
+		Assert::AreEqual(LOCATEELEM(L, 31), 9);
 	}
 };

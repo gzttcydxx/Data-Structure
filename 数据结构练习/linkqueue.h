@@ -2,7 +2,7 @@
 #include "base.h"
 
 typedef struct QNode {
-	ElemType data;
+	QElemType data;
 	struct QNode* next;
 }QNode, * QueuePtr;
 typedef struct {
@@ -13,7 +13,7 @@ typedef struct {
 Status INITQUEUE(LinkQueue& Q);
 Status QUEUEEMPTY(LinkQueue Q);
 int QUEUELENGTH(LinkQueue Q);
-Status GETHEAD(LinkQueue Q, ElemType& item);
-Status ENQUEUE(LinkQueue& Q, ElemType item);
-Status DEQUEUE(LinkQueue& Q, ElemType& item);
-Status PRINTQUEUE(LinkQueue Q, Status(*visit)(ElemType));
+Status GETHEAD(LinkQueue Q, QElemType& item);
+Status ENQUEUE(LinkQueue& Q, QElemType item);
+Status DEQUEUE(LinkQueue& Q, QElemType& item);
+Status PRINTQUEUE(LinkQueue Q);

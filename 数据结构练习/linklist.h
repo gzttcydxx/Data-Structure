@@ -6,10 +6,9 @@ typedef struct LNode {
 	struct LNode* next;
 }LNode, * LinkList;
 
-inline Status compare(ElemType e1, ElemType e2);
 Status INITLINKLIST(LinkList& L);
 Status INSERTLINKLIST(LinkList& L, int i, ElemType item);
 Status DELETELINKLIST(LinkList& L, int i, ElemType& item);
-int LOCATEELEM(LinkList L, ElemType item, Status(*compare)(ElemType, ElemType));
+int LOCATEELEM(LinkList L, ElemType item);
 Status GETELEM(LinkList L, int i, ElemType& item);
-Status PRINTLINKLIST(LinkList L, Status(*visit)(ElemType));
+Status PRINTLINKLIST(LinkList L);

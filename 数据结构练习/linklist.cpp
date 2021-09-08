@@ -40,10 +40,10 @@ Status DELETELINKLIST(LinkList& L, int i, ElemType& item) {
 	return OK;
 }
 
-int LOCATEELEM(LinkList L, ElemType item, Status(*compare)(ElemType, ElemType)) {
+int LOCATEELEM(LinkList L, ElemType item) {
 	int i = 1;
 	LinkList p = L->next;
-	while (p && !(*compare)(p->data, item)) {
+	while (p && !compare(p->data, item)) {
 		p = p->next;
 		i++;
 	}
@@ -63,10 +63,10 @@ Status GETELEM(LinkList L, int i, ElemType& item) {
 	return OK;
 }
 
-Status PRINTLINKLIST(LinkList L, Status(*visit)(ElemType)) {
+Status PRINTLINKLIST(LinkList L) {
 	LinkList p = L->next;
 	while (p) {
-		(*visit)(p->data);
+		visit(p->data);
 		p = p->next;
 	}
 	return OK;

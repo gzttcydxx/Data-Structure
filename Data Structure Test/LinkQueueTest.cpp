@@ -40,7 +40,7 @@ public:
 	}
 	TEST_METHOD(TestDeLinkQueue) {
 		LinkQueue Q = CreateQueue();
-		ElemType e;
+		QElemType e;
 		QueuePtr p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(DEQUEUE(Q, e), OK);
@@ -72,7 +72,7 @@ public:
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
 		LinkQueue Q;
-		ElemType e;
+		QElemType e;
 		QueuePtr p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITQUEUE(Q);

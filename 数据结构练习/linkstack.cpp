@@ -24,13 +24,13 @@ int STACKLENGTH(LinkStack S) {
 	return i;
 }
 
-Status GETTOP(LinkStack S, ElemType& item) {
+Status GETTOP(LinkStack S, SElemType& item) {
 	if (STACKEMPTY(S)) return ERROR;
 	item = S->next->data;
 	return OK;
 }
 
-Status PUSH(LinkStack& S, ElemType item) {
+Status PUSH(LinkStack& S, SElemType item) {
 	LinkStack p = (LinkStack)malloc(sizeof(struct SNode));
 	if (!p) exit(OVERFLOW);
 	p->data = item;
@@ -39,7 +39,7 @@ Status PUSH(LinkStack& S, ElemType item) {
 	return OK;
 }
 
-Status POP(LinkStack& S, ElemType& item) {
+Status POP(LinkStack& S, SElemType& item) {
 	LinkStack p;
 	if (STACKEMPTY(S)) return ERROR;
 	item = S->next->data;
@@ -49,10 +49,10 @@ Status POP(LinkStack& S, ElemType& item) {
 	return OK;
 }
 
-Status PRINTSTACK(LinkStack S, Status(*visit)(ElemType)) {
+Status PRINTSTACK(LinkStack S) {
 	LinkStack p = S->next;
 	while (p) {
-		(*visit)(p->data);
+		visit(p->data);
 		p = p->next;
 	}
 	return OK;

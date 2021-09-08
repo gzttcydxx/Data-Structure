@@ -23,13 +23,13 @@ int QUEUELENGTH(LinkQueue Q) {
 	return i;
 }
 
-Status GETHEAD(LinkQueue Q, ElemType& item) {
+Status GETHEAD(LinkQueue Q, QElemType& item) {
 	if (QUEUEEMPTY(Q)) return ERROR;
 	item = Q.front->next->data;
 	return OK;
 }
 
-Status ENQUEUE(LinkQueue& Q, ElemType item) {
+Status ENQUEUE(LinkQueue& Q, QElemType item) {
 	QueuePtr p = (QueuePtr)malloc(sizeof(QNode));
 	if (!p) exit(OVERFLOW);
 	p->data = item;
@@ -39,7 +39,7 @@ Status ENQUEUE(LinkQueue& Q, ElemType item) {
 	return OK;
 }
 
-Status DEQUEUE(LinkQueue& Q, ElemType& item) {
+Status DEQUEUE(LinkQueue& Q, QElemType& item) {
 	QueuePtr p;
 	if (QUEUEEMPTY(Q)) return ERROR;
 	p = Q.front->next;
@@ -50,10 +50,10 @@ Status DEQUEUE(LinkQueue& Q, ElemType& item) {
 	return OK;
 }
 
-Status PRINTQUEUE(LinkQueue Q, Status(*visit)(ElemType)) {
+Status PRINTQUEUE(LinkQueue Q) {
 	QueuePtr p = Q.front->next;
 	while (p) {
-		(*visit)(p->data);
+		visit(p->data);
 		p = p->next;
 	}
 	return OK;

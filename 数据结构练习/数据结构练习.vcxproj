@@ -124,7 +124,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="base.cpp" />
     <ClCompile Include="bitree.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="linklist.cpp" />

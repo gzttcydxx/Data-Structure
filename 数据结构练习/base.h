@@ -7,9 +7,11 @@
 #define FALSE 0
 #define INFEASIBLE -1
 #define OVERFLOW -2
+#define compare(e1, e2) (e1 == e2 ? TRUE: FALSE)
+#define visit(e) (printf("%d ", e))
 
 typedef int Status;
 typedef int ElemType;
-
-Status compare(ElemType e1, ElemType e2);
-Status visit(ElemType item);
+typedef int SElemType;
+typedef int QElemType;
+typedef char TElemType;

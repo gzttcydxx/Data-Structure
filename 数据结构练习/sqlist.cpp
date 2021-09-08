@@ -35,15 +35,15 @@ Status DELETELIST(SqList& L, int i, ElemType &item) {
 	return OK;
 }
 
-int LOCATEELEM(SqList L, ElemType item, Status(*compare)(ElemType, ElemType)) {
+int LOCATEELEM(SqList L, ElemType item) {
 	int i = 1;
 	ElemType* p = L.elem;
-	while (i <= L.length && !(*compare)(*p++, item)) i++;
+	while (i <= L.length && !compare(*p++, item)) i++;
 	if (i <= L.length) return i;
 	else return ERROR;
 }
 
-Status PRINTLIST(SqList L, Status(*visit)(ElemType)) {
-	for (int i = 0; i < L.length; i++) (*visit)(L.elem[i]);
+Status PRINTLIST(SqList L) {
+	for (int i = 0; i < L.length; i++) visit(L.elem[i]);
 	return OK;
 }

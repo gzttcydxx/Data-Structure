@@ -9,9 +9,8 @@ typedef struct {
 	int listsize;
 }SqList;
 
-inline Status compare(ElemType e1, ElemType e2);
 Status INITLIST(SqList& L);
 Status INSERTLIST(SqList& L, int i, ElemType item);
 Status DELETELIST(SqList& L, int i, ElemType& item);
-int LOCATEELEM(SqList L, ElemType item, Status(*compare)(ElemType, ElemType));
-Status PRINTLIST(SqList L, Status(*visit)(ElemType));
+int LOCATEELEM(SqList L, ElemType item);
+Status PRINTLIST(SqList L);

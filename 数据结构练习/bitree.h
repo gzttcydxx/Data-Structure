@@ -2,13 +2,14 @@
 #include "base.h"
 
 typedef struct BiTNode {
-	ElemType data;
+	TElemType data;
 	struct BiTNode* lchild;
 	struct BiTNode* rchild;
 }BiTNode, * BiTree;
 
 Status INITBITREE(BiTree& T);
-Status PREORDERTRAVERSE(BiTree T, Status(*visit)(ElemType));
-Status INORDERTRAVERSE(BiTree T, Status(*visit)(ElemType));
-Status POSTORDERTRAVERSE(BiTree T, Status(*visit)(ElemType));
-Status LEVELORDERTRAVERSE(BiTree T, Status(*visit)(ElemType));
+Status CREATEBITREE(BiTree& T, Status(*read)(TElemType&));
+Status PREORDERTRAVERSE(BiTree T, Status(*visit)(TElemType));
+Status INORDERTRAVERSE(BiTree T, Status(*visit)(TElemType));
+Status POSTORDERTRAVERSE(BiTree T, Status(*visit)(TElemType));
+Status LEVELORDERTRAVERSE(BiTree T, Status(*visit)(TElemType));

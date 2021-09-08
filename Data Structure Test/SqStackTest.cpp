@@ -15,14 +15,14 @@ public:
 	TEST_METHOD(TestCreateSqStack) {
 		int i = 0;
 		SqStack S = CreateStack();
-		ElemType* p = S.base;
+		SElemType* p = S.base;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		while (p != S.top) Assert::AreEqual(M[i++], *p++);
 	}
 	TEST_METHOD(TestPushSqStack) {
 		int i = 0;
 		SqStack S = CreateStack();
-		ElemType* p;
+		SElemType* p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31, 1, 2, 3, 4, 5 };
 		Assert::AreEqual(PUSH(S, 1), OK);
 		Assert::AreEqual(PUSH(S, 2), OK);
@@ -35,7 +35,7 @@ public:
 	TEST_METHOD(TestPopSqStack) {
 		int i = 0;
 		SqStack S = CreateStack();
-		ElemType* p = S.base, e;
+		SElemType* p = S.base, e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(POP(S, e), OK);
 		Assert::AreEqual(e, 31);
@@ -62,7 +62,7 @@ public:
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
 		SqStack S;
-		ElemType* p, e;
+		SElemType* p, e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		Assert::AreEqual(GETTOP(S, e), ERROR);

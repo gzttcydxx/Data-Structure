@@ -4,7 +4,7 @@
 #define QUEUEINCREMENT 10
 
 typedef struct {
-	ElemType* elem;
+	QElemType* elem;
 	int front;
 	int rear;
 	int stacksize;
@@ -13,7 +13,7 @@ typedef struct {
 Status INITQUEUE(SqQueue& Q);
 Status QUEUEEMPTY(SqQueue Q);
 int QUEUELENGTH(SqQueue Q);
-Status GETHEAD(SqQueue Q, ElemType& item);
-Status ENQUEUE(SqQueue& Q, ElemType item);
-Status DEQUEUE(SqQueue& Q, ElemType& item);
-Status PRINTQUEUE(SqQueue Q, Status(*visit)(ElemType));
+Status GETHEAD(SqQueue Q, QElemType& item);
+Status ENQUEUE(SqQueue& Q, QElemType item);
+Status DEQUEUE(SqQueue& Q, QElemType& item);
+Status PRINTQUEUE(SqQueue Q);

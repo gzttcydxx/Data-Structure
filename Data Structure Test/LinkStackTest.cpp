@@ -39,7 +39,7 @@ public:
 	TEST_METHOD(TestPopLinkStack) {
 		int i = 0;
 		LinkStack S = CreateStack(), p;
-		ElemType e;
+		SElemType e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(POP(S, e), OK);
 		Assert::AreEqual(e, 1);
@@ -70,7 +70,7 @@ public:
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
 		LinkStack S = CreateStack(), p;
-		ElemType e;
+		SElemType e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		Assert::AreEqual(GETTOP(S, e), ERROR);
