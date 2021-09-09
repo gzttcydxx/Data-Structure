@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "sqlist.h"
 
-Status INITLIST(SqList& L) {
+template <typename ElemType> Status INITLIST(SqList<ElemType>& L) {
 	L.elem = (ElemType*)malloc(LIST_INIT_SIZE * sizeof(ElemType));
 	if (!L.elem) exit(OVERFLOW);
 	L.length = 0;
@@ -10,7 +10,7 @@ Status INITLIST(SqList& L) {
 	return OK;
 }
 
-Status INSERTLIST(SqList& L, int i, ElemType item) {
+template <typename ElemType> Status INSERTLIST(SqList<ElemType>& L, int i, ElemType item) {
 	ElemType* newbase, * q;
 	if (i < 1 || i > L.length + 1) return ERROR;
 	if (L.length >= L.listsize) {
@@ -25,7 +25,7 @@ Status INSERTLIST(SqList& L, int i, ElemType item) {
 	return OK;
 }
 
-Status DELETELIST(SqList& L, int i, ElemType &item) {
+template <typename ElemType> Status DELETELIST(SqList<ElemType>& L, int i, ElemType &item) {
 	ElemType* p,* q;
 	if ((i < 1) || (i > L.length)) return ERROR;
 	p = &(L.elem[i - 1]);
@@ -35,7 +35,7 @@ Status DELETELIST(SqList& L, int i, ElemType &item) {
 	return OK;
 }
 
-int LOCATEELEM(SqList L, ElemType item) {
+template <typename ElemType> int LOCATEELEM(SqList<ElemType> L, ElemType item, Status(*compare)(ElemType, ElemType)) {
 	int i = 1;
 	ElemType* p = L.elem;
 	while (i <= L.length && !compare(*p++, item)) i++;
@@ -43,7 +43,7 @@ int LOCATEELEM(SqList L, ElemType item) {
 	else return ERROR;
 }
 
-Status PRINTLIST(SqList L) {
+template <typename ElemType> Status PRINTLIST(SqList<ElemType> L, Status(*visit)(ElemType)) {
 	for (int i = 0; i < L.length; i++) visit(L.elem[i]);
 	return OK;
 }

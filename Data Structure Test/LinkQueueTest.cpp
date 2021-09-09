@@ -1,12 +1,12 @@
 #include "CppUnitTest.h"
-#include "../数据结构练习/linkqueue.h"
+#include "../数据结构练习/linkqueue.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestLinkQueue) {
 public:
-	LinkQueue CreateQueue() {
-		LinkQueue Q;
+	LinkQueue<int> CreateQueue() {
+		LinkQueue<int> Q;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITQUEUE(Q);
 		for (int i = 0; i < 9; i++) ENQUEUE(Q, M[i]);
@@ -14,8 +14,8 @@ public:
 	}
 	TEST_METHOD(TestCreateLinkQueue) {
 		int i = 0;
-		LinkQueue Q = CreateQueue();
-		QueuePtr p = Q.front->next;
+		LinkQueue<int> Q = CreateQueue();
+		QueuePtr<int> p = Q.front->next;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		while (p) {
 			Assert::AreEqual(M[i++], p->data);
@@ -24,8 +24,8 @@ public:
 	}
 	TEST_METHOD(TestEnLinkQueue) {
 		int i = 0;
-		LinkQueue Q = CreateQueue();
-		QueuePtr p;
+		LinkQueue<int> Q = CreateQueue();
+		QueuePtr<int> p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31, 1, 2, 3, 4, 5 };
 		Assert::AreEqual(ENQUEUE(Q, 1), OK);
 		Assert::AreEqual(ENQUEUE(Q, 2), OK);
@@ -39,9 +39,9 @@ public:
 		}
 	}
 	TEST_METHOD(TestDeLinkQueue) {
-		LinkQueue Q = CreateQueue();
-		QElemType e;
-		QueuePtr p;
+		LinkQueue<int> Q = CreateQueue();
+		int e;
+		QueuePtr<int> p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(DEQUEUE(Q, e), OK);
 		Assert::AreEqual(e, 1);
@@ -71,9 +71,9 @@ public:
 	}
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
-		LinkQueue Q;
-		QElemType e;
-		QueuePtr p;
+		LinkQueue<int> Q;
+		int e;
+		QueuePtr<int> p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITQUEUE(Q);
 		Assert::AreEqual(GETHEAD(Q, e), ERROR);

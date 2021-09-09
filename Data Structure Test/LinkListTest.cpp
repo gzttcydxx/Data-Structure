@@ -1,12 +1,13 @@
 #include "CppUnitTest.h"
-#include "../数据结构练习/linklist.h"
+#include "../数据结构练习/base.cpp"
+#include "../数据结构练习/linklist.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestLinkList) {
 public:
-	LinkList CreateList() {
-		LinkList L;
+	LinkList<int> CreateList() {
+		LinkList<int> L;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITLINKLIST(L);
 		for (int i = 8; i >= 0; i--) INSERTLINKLIST(L, 1, M[i]);
@@ -14,7 +15,7 @@ public:
 	}
 	TEST_METHOD(TestCreateSqList) {
 		int i = 0;
-		LinkList L = CreateList(), p = L->next;
+		LinkList<int> L = CreateList(), p = L->next;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		while (p) {
 			Assert::AreEqual(M[i], p->data);
@@ -24,7 +25,7 @@ public:
 	};
 	TEST_METHOD(TestInsertSqList) {
 		int i = 0;
-		LinkList L = CreateList(), p;
+		LinkList<int> L = CreateList(), p;
 		int M[] = { 1000, 1, 0, 44, 2, 7, 23, 75, 32, 97, 31, 1 };
 		Assert::AreEqual(INSERTLINKLIST(L, -2, 0), ERROR);
 		Assert::AreEqual(INSERTLINKLIST(L, 200, 0), ERROR);
@@ -40,8 +41,8 @@ public:
 	};
 	TEST_METHOD(TestDeleteSqList) {
 		int i = 0;
-		LinkList L = CreateList(), p;
-		ElemType e;
+		LinkList<int> L = CreateList(), p;
+		int e;
 		const int M[] = { 44, 2, 7, 23, 32, 97 };
 		Assert::AreEqual(DELETELINKLIST(L, 1, e), OK);
 		Assert::AreEqual(e, 1);
@@ -59,10 +60,10 @@ public:
 		}
 	}
 	TEST_METHOD(TestLocateElement) {
-		LinkList L = CreateList();
-		Assert::AreEqual(LOCATEELEM(L, 97), 8);
-		Assert::AreEqual(LOCATEELEM(L, 971), 0);
-		Assert::AreEqual(LOCATEELEM(L, 1), 1);
-		Assert::AreEqual(LOCATEELEM(L, 31), 9);
+		LinkList<int> L = CreateList();
+		Assert::AreEqual(LOCATEELEM(L, 97, compare), 8);
+		Assert::AreEqual(LOCATEELEM(L, 971, compare), 0);
+		Assert::AreEqual(LOCATEELEM(L, 1, compare), 1);
+		Assert::AreEqual(LOCATEELEM(L, 31, compare), 9);
 	}
 };

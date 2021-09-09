@@ -1,18 +1,21 @@
 #include <stdio.h>
+#include "base.h"
+#include "base.cpp"
 #include "bitree.h"
+#include "bitree.cpp"
 
 int main() {
 	FILE* fp = fopen("bitree.in", "r");
-	BiTree T;
+	BiTree<char> T;
 	//INITBITREE(T);
 	CREATEBITREE(T, fp);
-	PREORDERTRAVERSE(T);
+	PREORDERTRAVERSE(T, visit<char>);
 	puts("\n");
-	INORDERTRAVERSE(T);
+	INORDERTRAVERSE(T, visit<char>);
 	puts("\n");
-	POSTORDERTRAVERSE(T);
+	POSTORDERTRAVERSE(T, visit<char>);
 	puts("\n");
-	LEVELORDERTRAVERSE(T);
+	LEVELORDERTRAVERSE(T, visit<char>);
 	fclose(fp);
 	return 0;
 }

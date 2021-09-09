@@ -2,21 +2,21 @@
 #include <stdlib.h>
 #include "linkstack.h"
 
-Status INITSTACK(LinkStack& S) {
-	S = (LinkStack)malloc(sizeof(struct SNode));
+template <typename SElemType> Status INITSTACK(LinkStack<SElemType>& S) {
+	S = (LinkStack<SElemType>)malloc(sizeof(SNode<SElemType>));
 	if (!S) exit(OVERFLOW);
 	S->next = NULL;
 	return OK;
 }
 
-Status STACKEMPTY(LinkStack& S) {
+template <typename SElemType> Status STACKEMPTY(LinkStack<SElemType>& S) {
 	if (!S->next) return TRUE;
 	else return FALSE;
 }
 
-int STACKLENGTH(LinkStack S) {
+template <typename SElemType> int STACKLENGTH(LinkStack<SElemType> S) {
 	int i = 0;
-	LinkStack p = S->next;
+	LinkStack<SElemType> p = S->next;
 	while (p) {
 		p = p->next;
 		i++;
@@ -24,14 +24,14 @@ int STACKLENGTH(LinkStack S) {
 	return i;
 }
 
-Status GETTOP(LinkStack S, SElemType& item) {
+template <typename SElemType> Status GETTOP(LinkStack<SElemType> S, SElemType& item) {
 	if (STACKEMPTY(S)) return ERROR;
 	item = S->next->data;
 	return OK;
 }
 
-Status PUSH(LinkStack& S, SElemType item) {
-	LinkStack p = (LinkStack)malloc(sizeof(struct SNode));
+template <typename SElemType> Status PUSH(LinkStack<SElemType>& S, SElemType item) {
+	LinkStack<SElemType> p = (LinkStack<SElemType>)malloc(sizeof(SNode<SElemType>));
 	if (!p) exit(OVERFLOW);
 	p->data = item;
 	p->next = S->next;
@@ -39,8 +39,8 @@ Status PUSH(LinkStack& S, SElemType item) {
 	return OK;
 }
 
-Status POP(LinkStack& S, SElemType& item) {
-	LinkStack p;
+template <typename SElemType> Status POP(LinkStack<SElemType>& S, SElemType& item) {
+	LinkStack<SElemType> p;
 	if (STACKEMPTY(S)) return ERROR;
 	item = S->next->data;
 	p = S->next;
@@ -49,8 +49,8 @@ Status POP(LinkStack& S, SElemType& item) {
 	return OK;
 }
 
-Status PRINTSTACK(LinkStack S) {
-	LinkStack p = S->next;
+template <typename SElemType> Status PRINTSTACK(LinkStack<SElemType> S, Status(*visit)(SElemType)) {
+	LinkStack<SElemType> p = S->next;
 	while (p) {
 		visit(p->data);
 		p = p->next;

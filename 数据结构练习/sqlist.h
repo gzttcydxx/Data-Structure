@@ -3,14 +3,14 @@
 #define LIST_INIT_SIZE 10
 #define LISTINCREMENT 10
 
-typedef struct {
+template <typename ElemType> struct SqList {
 	ElemType* elem;
 	int length;
 	int listsize;
-}SqList;
+};
 
-Status INITLIST(SqList& L);
-Status INSERTLIST(SqList& L, int i, ElemType item);
-Status DELETELIST(SqList& L, int i, ElemType& item);
-int LOCATEELEM(SqList L, ElemType item);
-Status PRINTLIST(SqList L);
+template <typename ElemType> Status INITLIST(SqList<ElemType>& L);
+template <typename ElemType> Status INSERTLIST(SqList<ElemType>& L, int i, ElemType item);
+template <typename ElemType> Status DELETELIST(SqList<ElemType>& L, int i, ElemType& item);
+template <typename ElemType> int LOCATEELEM(SqList<ElemType> L, ElemType item, Status(*compare)(ElemType, ElemType));
+template <typename ElemType> Status PRINTLIST(SqList<ElemType> L, Status(*visit)(ElemType));

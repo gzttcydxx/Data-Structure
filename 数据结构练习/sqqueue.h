@@ -3,17 +3,17 @@
 #define QUEUE_INIT_SIZE 10
 #define QUEUEINCREMENT 10
 
-typedef struct {
+template <typename QElemType> struct SqQueue {
 	QElemType* elem;
 	int front;
 	int rear;
 	int stacksize;
-}SqQueue;
+};
 
-Status INITQUEUE(SqQueue& Q);
-Status QUEUEEMPTY(SqQueue Q);
-int QUEUELENGTH(SqQueue Q);
-Status GETHEAD(SqQueue Q, QElemType& item);
-Status ENQUEUE(SqQueue& Q, QElemType item);
-Status DEQUEUE(SqQueue& Q, QElemType& item);
-Status PRINTQUEUE(SqQueue Q);
+template <typename QElemType> Status INITQUEUE(SqQueue<QElemType>& Q);
+template <typename QElemType> Status QUEUEEMPTY(SqQueue<QElemType> Q);
+template <typename QElemType> int QUEUELENGTH(SqQueue<QElemType> Q);
+template <typename QElemType> Status GETHEAD(SqQueue<QElemType> Q, QElemType& item);
+template <typename QElemType> Status ENQUEUE(SqQueue<QElemType>& Q, QElemType item);
+template <typename QElemType> Status DEQUEUE(SqQueue<QElemType>& Q, QElemType& item);
+template <typename QElemType> Status PRINTQUEUE(SqQueue<QElemType> Q, Status(*visit)(QElemType));

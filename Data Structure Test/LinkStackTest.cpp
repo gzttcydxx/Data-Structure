@@ -1,12 +1,12 @@
 #include "CppUnitTest.h"
-#include "../数据结构练习/linkstack.h"
+#include "../数据结构练习/linkstack.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestLinkStack) {
 public:
-	LinkStack CreateStack() {
-		LinkStack S;
+	LinkStack<int> CreateStack() {
+		LinkStack<int> S;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		for (int i = 8; i >= 0; i--) PUSH(S, M[i]);
@@ -14,7 +14,7 @@ public:
 	}
 	TEST_METHOD(TestCreateLinkStack) {
 		int i = 0;
-		LinkStack S = CreateStack(), p = S->next;
+		LinkStack<int> S = CreateStack(), p = S->next;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		while (p) {
 			Assert::AreEqual(M[i++], p->data);
@@ -23,7 +23,7 @@ public:
 	}
 	TEST_METHOD(TestPushLinkStack) {
 		int i = 0;
-		LinkStack S = CreateStack(), p;
+		LinkStack<int> S = CreateStack(), p;
 		const int M[] = { 5, 4, 3, 2, 1, 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(PUSH(S, 1), OK);
 		Assert::AreEqual(PUSH(S, 2), OK);
@@ -38,8 +38,8 @@ public:
 	}
 	TEST_METHOD(TestPopLinkStack) {
 		int i = 0;
-		LinkStack S = CreateStack(), p;
-		SElemType e;
+		LinkStack<int> S = CreateStack(), p;
+		int e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(POP(S, e), OK);
 		Assert::AreEqual(e, 1);
@@ -69,8 +69,8 @@ public:
 	}
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
-		LinkStack S = CreateStack(), p;
-		SElemType e;
+		LinkStack<int> S = CreateStack(), p;
+		int e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		Assert::AreEqual(GETTOP(S, e), ERROR);

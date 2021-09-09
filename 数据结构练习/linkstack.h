@@ -1,15 +1,16 @@
 #pragma once
 #include "base.h"
 
-typedef struct SNode {
+template <typename SElemType> struct SNode {
 	SElemType data;
 	struct SNode* next;
-}SNode, * LinkStack;
+};
+template <typename SElemType> using LinkStack = SNode<SElemType>*;
 
-Status INITSTACK(LinkStack& S);
-Status STACKEMPTY(LinkStack& S);
-int STACKLENGTH(LinkStack S);
-Status GETTOP(LinkStack S, SElemType& item);
-Status PUSH(LinkStack& S, SElemType item);
-Status POP(LinkStack& S, SElemType& item);
-Status PRINTSTACK(LinkStack S);
+template <typename SElemType> Status INITSTACK(LinkStack<SElemType>& S);
+template <typename SElemType> Status STACKEMPTY(LinkStack<SElemType>& S);
+template <typename SElemType> int STACKLENGTH(LinkStack<SElemType> S);
+template <typename SElemType> Status GETTOP(LinkStack<SElemType> S, SElemType& item);
+template <typename SElemType> Status PUSH(LinkStack<SElemType>& S, SElemType item);
+template <typename SElemType> Status POP(LinkStack<SElemType>& S, SElemType& item);
+template <typename SElemType> Status PRINTSTACK(LinkStack<SElemType> S, Status(*visit)(SElemType));

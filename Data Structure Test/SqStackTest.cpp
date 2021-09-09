@@ -1,12 +1,12 @@
 #include "CppUnitTest.h"
-#include "../数据结构练习/sqstack.h"
+#include "../数据结构练习/sqstack.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestSqStack) {
 public:
-	SqStack CreateStack() {
-		SqStack S;
+	SqStack<int> CreateStack() {
+		SqStack<int> S;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		for (int i = 0; i < 9; i++) PUSH(S, M[i]);
@@ -14,15 +14,15 @@ public:
 	}
 	TEST_METHOD(TestCreateSqStack) {
 		int i = 0;
-		SqStack S = CreateStack();
-		SElemType* p = S.base;
+		SqStack<int> S = CreateStack();
+		int* p = S.base;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		while (p != S.top) Assert::AreEqual(M[i++], *p++);
 	}
 	TEST_METHOD(TestPushSqStack) {
 		int i = 0;
-		SqStack S = CreateStack();
-		SElemType* p;
+		SqStack<int> S = CreateStack();
+		int* p;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31, 1, 2, 3, 4, 5 };
 		Assert::AreEqual(PUSH(S, 1), OK);
 		Assert::AreEqual(PUSH(S, 2), OK);
@@ -34,8 +34,8 @@ public:
 	}
 	TEST_METHOD(TestPopSqStack) {
 		int i = 0;
-		SqStack S = CreateStack();
-		SElemType* p = S.base, e;
+		SqStack<int> S = CreateStack();
+		int* p = S.base, e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(POP(S, e), OK);
 		Assert::AreEqual(e, 31);
@@ -61,8 +61,8 @@ public:
 	}
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
-		SqStack S;
-		SElemType* p, e;
+		SqStack<int> S;
+		int* p, e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		Assert::AreEqual(GETTOP(S, e), ERROR);

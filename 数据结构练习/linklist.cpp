@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include "linklist.h"
 
-Status INITLINKLIST(LinkList& L) {
-	L = (LinkList)malloc(sizeof(LNode));
+template <typename ElemType> Status INITLINKLIST(LinkList<ElemType>& L) {
+	L = (LinkList<ElemType>)malloc(sizeof(LNode<ElemType>));
 	if (!L) exit(OVERFLOW);
 	L->next = NULL;
 	return OK;
 }
 
-Status INSERTLINKLIST(LinkList& L, int i, ElemType item) {
+template <typename ElemType> Status INSERTLINKLIST(LinkList<ElemType>& L, int i, ElemType item) {
 	int j = 0;
-	LinkList p = L, q;
+	LinkList<ElemType> p = L, q;
 	while (p && j < i - 1) {
 		p = p->next;
 		j++;
 	}
 	if (!p || j > i - 1) return ERROR;
-	q = (LinkList)malloc(sizeof(LNode));
+	q = (LinkList<ElemType>)malloc(sizeof(LNode<ElemType>));
 	if (!q) exit(OVERFLOW);
 	q->data = item;
 	q->next = p->next;
@@ -25,9 +25,9 @@ Status INSERTLINKLIST(LinkList& L, int i, ElemType item) {
 	return OK;
 }
 
-Status DELETELINKLIST(LinkList& L, int i, ElemType& item) {
+template <typename ElemType> Status DELETELINKLIST(LinkList<ElemType>& L, int i, ElemType& item) {
 	int j = 0;
-	LinkList p = L, q;
+	LinkList<ElemType> p = L, q;
 	while (p->next && j < i - 1) {
 		p = p->next;
 		j++;
@@ -40,9 +40,9 @@ Status DELETELINKLIST(LinkList& L, int i, ElemType& item) {
 	return OK;
 }
 
-int LOCATEELEM(LinkList L, ElemType item) {
+template <typename ElemType> int LOCATEELEM(LinkList<ElemType> L, ElemType item, Status(*compare)(ElemType, ElemType)) {
 	int i = 1;
-	LinkList p = L->next;
+	LinkList<ElemType> p = L->next;
 	while (p && !compare(p->data, item)) {
 		p = p->next;
 		i++;
@@ -51,9 +51,9 @@ int LOCATEELEM(LinkList L, ElemType item) {
 	else return i;
 }
 
-Status GETELEM(LinkList L, int i, ElemType& item) {
+template <typename ElemType> Status GETELEM(LinkList<ElemType> L, int i, ElemType& item) {
 	int j = 0;
-	LinkList p = L;
+	LinkList<ElemType> p = L;
 	while (p && j < i) {
 		p = p->next;
 		j++;
@@ -63,8 +63,8 @@ Status GETELEM(LinkList L, int i, ElemType& item) {
 	return OK;
 }
 
-Status PRINTLINKLIST(LinkList L) {
-	LinkList p = L->next;
+template <typename ElemType> Status PRINTLINKLIST(LinkList<ElemType> L, Status(*visit)(ElemType)) {
+	LinkList<ElemType> p = L->next;
 	while (p) {
 		visit(p->data);
 		p = p->next;

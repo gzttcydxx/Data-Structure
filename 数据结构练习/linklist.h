@@ -1,14 +1,15 @@
 #pragma once
 #include "base.h"
 
-typedef struct LNode {
+template <typename ElemType> struct LNode {
 	ElemType data;
 	struct LNode* next;
-}LNode, * LinkList;
+};
+template <typename ElemType> using LinkList = LNode<ElemType>*;
 
-Status INITLINKLIST(LinkList& L);
-Status INSERTLINKLIST(LinkList& L, int i, ElemType item);
-Status DELETELINKLIST(LinkList& L, int i, ElemType& item);
-int LOCATEELEM(LinkList L, ElemType item);
-Status GETELEM(LinkList L, int i, ElemType& item);
-Status PRINTLINKLIST(LinkList L);
+template <typename ElemType> Status INITLINKLIST(LinkList<ElemType>& L);
+template <typename ElemType> Status INSERTLINKLIST(LinkList<ElemType>& L, int i, ElemType item);
+template <typename ElemType> Status DELETELINKLIST(LinkList<ElemType>& L, int i, ElemType& item);
+template <typename ElemType> int LOCATEELEM(LinkList<ElemType> L, ElemType item, Status(*compare)(ElemType, ElemType));
+template <typename ElemType> Status GETELEM(LinkList<ElemType> L, int i, ElemType& item);
+template <typename ElemType> Status PRINTLINKLIST(LinkList<ElemType> L, Status(*visit)(ElemType));
