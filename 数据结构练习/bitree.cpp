@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bitree.h"
+#include "linkstack.cpp"
 #include "linkqueue.cpp"
 
 template <typename TElemType> Status INITBITREE(BiTree<TElemType>& T) {
@@ -27,29 +28,53 @@ template <typename TElemType> Status CREATEBITREE(BiTree<TElemType>& T, FILE* fp
 template <typename TElemType> Status PREORDERTRAVERSE(BiTree<TElemType> T, Status(*visit)(TElemType)) {
 	/*µÝ¹éËã·¨
 	if (T) {
-		if (visit(T->data)) if (PREORDERTRAVERSE(T->lchild)) if (PREORDERTRAVERSE(T->rchild)) return OK;
+		if (visit(T->data)) if (PREORDERTRAVERSE(T->lchild, visit)) if (PREORDERTRAVERSE(T->rchild, visit)) return OK;
 		return ERROR;
 	}
 	else return OK;
 	*/
+	LinkStack<BiTree<TElemType>> Q;
+	BiTree<TElemType> p;
+	INITSTACK(Q);
+	PUSH(Q, T);
+	while (!STACKEMPTY(Q)) {
+		POP(Q, p);
+		visit(p->data);
+		if (p->rchild) PUSH(Q, p->rchild);
+		if (p->lchild) PUSH(Q, p->lchild);
+	}
 	return OK;
 }
 
 template <typename TElemType> Status INORDERTRAVERSE(BiTree<TElemType> T, Status(*visit)(TElemType)) {
 	/*µÝ¹éËã·¨
 	if (T) {
-		if (INORDERTRAVERSE(T->lchild)) if (visit(T->data)) if (INORDERTRAVERSE(T->rchild)) return OK;
+		if (INORDERTRAVERSE(T->lchild, visit)) if (visit(T->data)) if (INORDERTRAVERSE(T->rchild, visit)) return OK;
 		return ERROR;
 	}
 	else return OK;
 	*/
+	LinkStack<BiTree<TElemType>> S;
+	BiTree<TElemType> p = T;
+	INITSTACK(S);
+	while (!STACKEMPTY(S) || p) {
+		if (p) {
+			PUSH(S, p);
+			p = p->lchild;
+		}
+		else {
+			POP(S, p);
+			visit(p->data);
+			p = p->rchild;
+		}
+	}
 	return OK;
 }
 
 template <typename TElemType> Status POSTORDERTRAVERSE(BiTree<TElemType> T, Status(*visit)(TElemType)) {
 	/*µÝ¹éËã·¨
 	if (T) {
-		if (POSTORDERTRAVERSE(T->lchild)) if (POSTORDERTRAVERSE(T->rchild)) if (visit(T->data)) return OK;
+		if (POSTORDERTRAVERSE(T->lchild, visit)) if (POSTORDERTRAVERSE(T->rchild, visit)) if (visit(T->data)) return OK;
 		return ERROR;
 	}
 	else return OK;
