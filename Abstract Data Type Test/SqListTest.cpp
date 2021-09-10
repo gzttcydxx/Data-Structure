@@ -1,6 +1,6 @@
 ﻿#include "CppUnitTest.h"
-#include "../数据结构练习/base.cpp"
-#include "../数据结构练习/sqlist.cpp"
+#include "../Abstract Data Type/base.cpp"
+#include "../Abstract Data Type/sqlist.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

@@ -1,75 +1,86 @@
 #include "CppUnitTest.h"
-#include "../数据结构练习/sqstack.cpp"
+#include "../Abstract Data Type/linkstack.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-TEST_CLASS(TestSqStack) {
+TEST_CLASS(TestLinkStack) {
 public:
-	SqStack<int> CreateStack() {
-		SqStack<int> S;
+	LinkStack<int> CreateStack() {
+		LinkStack<int> S;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
-		for (int i = 0; i < 9; i++) PUSH(S, M[i]);
+		for (int i = 8; i >= 0; i--) PUSH(S, M[i]);
 		return S;
 	}
-	TEST_METHOD(TestCreateSqStack) {
+	TEST_METHOD(TestCreateLinkStack) {
 		int i = 0;
-		SqStack<int> S = CreateStack();
-		int* p = S.base;
+		LinkStack<int> S = CreateStack(), p = S->next;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
-		while (p != S.top) Assert::AreEqual(M[i++], *p++);
+		while (p) {
+			Assert::AreEqual(M[i++], p->data);
+			p = p->next;
+		}
 	}
-	TEST_METHOD(TestPushSqStack) {
+	TEST_METHOD(TestPushLinkStack) {
 		int i = 0;
-		SqStack<int> S = CreateStack();
-		int* p;
-		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31, 1, 2, 3, 4, 5 };
+		LinkStack<int> S = CreateStack(), p;
+		const int M[] = { 5, 4, 3, 2, 1, 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(PUSH(S, 1), OK);
 		Assert::AreEqual(PUSH(S, 2), OK);
 		Assert::AreEqual(PUSH(S, 3), OK);
 		Assert::AreEqual(PUSH(S, 4), OK);
 		Assert::AreEqual(PUSH(S, 5), OK);
-		p = S.base;
-		while (p != S.top) Assert::AreEqual(M[i++], *p++);
+		p = S->next;
+		while (p) {
+			Assert::AreEqual(M[i++], p->data);
+			p = p->next;
+		}
 	}
-	TEST_METHOD(TestPopSqStack) {
+	TEST_METHOD(TestPopLinkStack) {
 		int i = 0;
-		SqStack<int> S = CreateStack();
-		int* p = S.base, e;
+		LinkStack<int> S = CreateStack(), p;
+		int e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 31);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 97);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 32);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 75);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 23);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 7);
-		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 2);
+		Assert::AreEqual(e, 1);
 		Assert::AreEqual(POP(S, e), OK);
 		Assert::AreEqual(e, 44);
 		Assert::AreEqual(POP(S, e), OK);
-		Assert::AreEqual(e, 1);
+		Assert::AreEqual(e, 2);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 7);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 23);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 75);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 32);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 97);
+		Assert::AreEqual(POP(S, e), OK);
+		Assert::AreEqual(e, 31);
 		Assert::AreEqual(POP(S, e), ERROR);
 		Assert::AreEqual(PUSH(S, 5), OK);
-		while (p != S.top) Assert::AreEqual(5, *p++);
+		p = S->next;
+		while (p) {
+			Assert::AreEqual(5, p->data);
+			p = p->next;
+		}
 	}
 	TEST_METHOD(TestGetTop) {
 		int i = 0;
-		SqStack<int> S;
-		int* p, e;
+		LinkStack<int> S = CreateStack(), p;
+		int e;
 		const int M[] = { 1, 44, 2, 7, 23, 75, 32, 97, 31 };
 		INITSTACK(S);
 		Assert::AreEqual(GETTOP(S, e), ERROR);
 		S = CreateStack();
 		Assert::AreEqual(GETTOP(S, e), OK);
-		Assert::AreEqual(e, 31);
-		p = S.base;
-		while (p != S.top) Assert::AreEqual(M[i++], *p++);
+		Assert::AreEqual(e, 1);
+		p = S->next;
+		while (p) {
+			Assert::AreEqual(M[i++], p->data);
+			p = p->next;
+		}
 	}
 };

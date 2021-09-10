@@ -79,6 +79,32 @@ template <typename TElemType> Status POSTORDERTRAVERSE(BiTree<TElemType> T, Stat
 	}
 	else return OK;
 	*/
+	LinkStack<BiTree<TElemType>> S;
+	LinkStack<int> flag;
+	BiTree<TElemType> p = T;
+	int f;
+	INITSTACK(S);
+	INITSTACK(flag);
+	while (!STACKEMPTY(S) || p) {
+		if (p) {
+			PUSH(S, p);
+			PUSH(flag, 0);
+			p = p->lchild;
+		}
+		else {
+			POP(S, p);
+			POP(flag, f);
+			if (f == 0) {
+				PUSH(S, p);
+				PUSH(flag, 1);
+				p = p->rchild;
+			}
+			else {
+				visit(p->data);
+				p = NULL;
+			}
+		}
+	}
 	return OK;
 }
 
