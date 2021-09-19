@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Abstract Data Type", "Abstr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Abstract Data Type Test", "Abstract Data Type Test\Abstract Data Type Test.vcxproj", "{91AD3289-EC68-4EF9-A6B5-319F062AE2D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Data Structure Application", "Data Structure Application\Data Structure Application.vcxproj", "{267623E5-B771-433C-BB8E-D8404EB4D688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{91AD3289-EC68-4EF9-A6B5-319F062AE2D9}.Release|x64.Build.0 = Release|x64
 		{91AD3289-EC68-4EF9-A6B5-319F062AE2D9}.Release|x86.ActiveCfg = Release|Win32
 		{91AD3289-EC68-4EF9-A6B5-319F062AE2D9}.Release|x86.Build.0 = Release|Win32
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Debug|x64.ActiveCfg = Debug|x64
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Debug|x64.Build.0 = Debug|x64
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Debug|x86.ActiveCfg = Debug|Win32
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Debug|x86.Build.0 = Debug|Win32
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Release|x64.ActiveCfg = Release|x64
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Release|x64.Build.0 = Release|x64
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Release|x86.ActiveCfg = Release|Win32
+		{267623E5-B771-433C-BB8E-D8404EB4D688}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
