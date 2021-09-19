@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lgraph.h"
+#include "linkstack.cpp"
 #include "linkqueue.cpp"
 
 template <typename VElemType> Status CREATEGRAPH(LGraph<VElemType>& G) {
@@ -34,6 +35,7 @@ template <typename VElemType> Status CREATEGRAPH(LGraph<VElemType>& G) {
 }
 
 template <typename VElemType> void DFS(LGraph<VElemType> G, int visited[], int v) {
+	/*µ›πÈ µœ÷
 	int w;
 	ELink* p;
 	printf("%d ", v + 1);
@@ -42,6 +44,28 @@ template <typename VElemType> void DFS(LGraph<VElemType> G, int visited[], int v
 	while (p) {
 		if (!visited[p->adjvex]) DFS(G, visited, p->adjvex);
 		p = p->next;
+	}
+	*/
+	int w;
+	ELink* p;
+	LinkStack<int> S;
+	INITSTACK(S);
+	PUSH(S, v);
+	printf("%d ", v + 1);
+	visited[v] = 1;
+	while (!STACKEMPTY(S)) {
+		GETTOP(S, w);
+		p = G.vertexes[w].link;
+		while (p) {
+			if (!visited[p->adjvex]) {
+				printf("%d ", p->adjvex + 1);
+				visited[p->adjvex] = 1;
+				PUSH(S, p->adjvex);
+				break;
+			}
+			p = p->next;
+		}
+		if (!p) POP(S, w);
 	}
 }
 

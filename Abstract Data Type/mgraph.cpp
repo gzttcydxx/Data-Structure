@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mgraph.h"
+#include "linkstack.cpp"
 
 Status CREATEGRAPH(MGraph& G) {
 	int vn, en, i, j, weight;
@@ -19,9 +20,27 @@ Status CREATEGRAPH(MGraph& G) {
 }
 
 void DFS(MGraph G, int visited[], int v) {
+	/*µ›πÈ µœ÷
 	printf("%d ", v + 1);
 	visited[v] = 1;
 	for (int i = v + 1; i < G.vexnum; i++) if (!visited[i] && G.arcs[v][i] < INFINITY) DFS(G, visited, i);
+	*/
+	int w, i;
+	LinkStack<int> S;
+	INITSTACK(S);
+	PUSH(S, v);
+	printf("%d ", v + 1);
+	visited[v] = 1;
+	while (!STACKEMPTY(S)) {
+		GETTOP(S, w);
+		for (i = w + 1; i < G.vexnum; i++) if (!visited[i] && G.arcs[w][i] < INFINITY) {
+			printf("%d ", i + 1);
+			visited[i] = 1;
+			PUSH(S, i);
+			break;
+		}
+		if (i == G.vexnum) POP(S, w);
+	}
 }
 
 Status TRAVEL_DFS(MGraph G) {
