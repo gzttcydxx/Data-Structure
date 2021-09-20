@@ -15,8 +15,10 @@ template <typename VElemType> struct LGraph {
 	int num;
 };
 
+template <typename VElemType> Status INITGRAPH(LGraph<VElemType>& G, int n);
 template <typename VElemType> Status CREATEGRAPH(LGraph<VElemType>& G);
 template <typename VElemType> void DFS(LGraph<VElemType> G, int visited[], int v);
 template <typename VElemType> Status TRAVEL_DFS(LGraph<VElemType> G);
 template <typename VElemType> void BFS(LGraph<VElemType> G, int visited[], int v);
 template <typename VElemType> Status TRAVEL_BFS(LGraph<VElemType> G);
+template <typename VElemType> Status MINSPANTREE_PRIM(LGraph<VElemType> G);

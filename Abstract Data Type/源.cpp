@@ -4,8 +4,6 @@
 int main() {
 	MGraph G;
 	CREATEGRAPH(G);
-	TRAVEL_DFS(G);
-	printf("\n");
-	TRAVEL_BFS(G);
+	MINSPANTREE_PRIM(G);
 	return 0;
 }

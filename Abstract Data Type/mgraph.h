@@ -13,3 +13,4 @@ Status CREATEGRAPH(MGraph& G);
 void DFS(MGraph G, int visited[], int v);
 Status TRAVEL_DFS(MGraph G);
 Status TRAVEL_BFS(MGraph G);
+Status MINSPANTREE_PRIM(MGraph G);
