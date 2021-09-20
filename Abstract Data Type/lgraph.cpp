@@ -115,7 +115,7 @@ template <typename VElemType> Status TRAVEL_BFS(LGraph<VElemType> G) {
 
 template <typename VElemType> Status MINSPANTREE_PRIM(LGraph<VElemType> G) {
 	ELink* p;
-	int* lowcost = (int*)calloc(G.num, sizeof(int)), * teend = (int*)calloc(G.num, sizeof(int)), mincost, index;
+	int* lowcost = (int*)calloc(G.num, sizeof(int)), * teend = (int*)calloc(G.num, sizeof(int)), mincost, index, minweight = 0;
 	if (!lowcost || !teend) exit(OVERFLOW);
 	for (int i = 1; i < G.num; i++) lowcost[i] = INT_MAX;
 	p = G.vertexes[0].link;
@@ -130,6 +130,7 @@ template <typename VElemType> Status MINSPANTREE_PRIM(LGraph<VElemType> G) {
 			index = j;
 		}
 		printf("(%d, %d)\n", teend[index] + 1, index + 1);
+		minweight += lowcost[index];
 		lowcost[index] = 0;
 		p = G.vertexes[index].link;
 		while (p) {
@@ -140,5 +141,6 @@ template <typename VElemType> Status MINSPANTREE_PRIM(LGraph<VElemType> G) {
 			p = p->next;
 		}
 	}
+	printf("min weight: %d", minweight);
 	return OK;
 }

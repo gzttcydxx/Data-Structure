@@ -69,7 +69,7 @@ Status TRAVEL_BFS(MGraph G) {
 }
 
 Status MINSPANTREE_PRIM(MGraph G) {
-	int* lowcost = (int*)calloc(G.vexnum, sizeof(int)), * teend = (int*)calloc(G.vexnum, sizeof(int)), mincost, index;
+	int* lowcost = (int*)calloc(G.vexnum, sizeof(int)), * teend = (int*)calloc(G.vexnum, sizeof(int)), mincost, index, minweight = 0;
 	if (!lowcost || !teend) exit(OVERFLOW);
 	for (int i = 1; i < G.vexnum; i++) lowcost[i] = G.arcs[0][i];
 	for (int i = 1; i < G.vexnum; i++) {
@@ -79,11 +79,13 @@ Status MINSPANTREE_PRIM(MGraph G) {
 			index = j;
 		}
 		printf("(%d, %d)\n", teend[index] + 1, index + 1);
+		minweight += lowcost[index];
 		lowcost[index] = 0;
 		for (int j = 0; j < G.vexnum; j++) if (G.arcs[index][j] < lowcost[j]) {
 				lowcost[j] = G.arcs[index][j];
 				teend[j] = index;
 		}
 	}
+	printf("min weight: %d", minweight);
 	return OK;
 }
