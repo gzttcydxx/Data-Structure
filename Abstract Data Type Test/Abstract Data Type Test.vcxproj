@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="LinkQueueTest.cpp" />
     <ClCompile Include="LinkStackTest.cpp" />
+    <ClCompile Include="SortsTest.cpp" />
     <ClCompile Include="SqListTest.cpp" />
     <ClCompile Include="LinkListTest.cpp" />
     <ClCompile Include="SqQueueTest.cpp" />

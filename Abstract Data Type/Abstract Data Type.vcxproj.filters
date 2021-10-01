@@ -48,6 +48,9 @@
     <ClCompile Include="mgraph.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="sorts.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sqlist.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="mgraph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sorts.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

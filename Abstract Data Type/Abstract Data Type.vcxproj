@@ -131,6 +131,7 @@
     <ClCompile Include="linkqueue.cpp" />
     <ClCompile Include="linkstack.cpp" />
     <ClCompile Include="mgraph.cpp" />
+    <ClCompile Include="sorts.cpp" />
     <ClCompile Include="sqqueue.cpp" />
     <ClCompile Include="sqstack.cpp" />
     <ClCompile Include="源.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="linkqueue.h" />
     <ClInclude Include="linkstack.h" />
     <ClInclude Include="mgraph.h" />
+    <ClInclude Include="sorts.h" />
     <ClInclude Include="sqlist.h" />
     <ClInclude Include="sqqueue.h" />
     <ClInclude Include="sqstack.h" />
